@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binomial Distribution</title>
+    <link rel="stylesheet" href="binomial.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+    <h1>Binomial Distribution Visualization</h1>
+    <p>
+        The binomial distribution models the number of successes in a fixed number of independent trials, each with the same probability of success. 
+        The probability of exactly \( k \) successes in \( n \) trials is given by the formula:
+    </p>
+    <p>
+        \( P(X = k) = \binom{n}{k} \cdot p^k \cdot (1 - p)^{n - k} \)
+    </p>
+    <p>
+        In this formula, \( \binom{n}{k} \) (read as "n choose k") represents the number of ways to choose \( k \) successes out of \( n \) trials. 
+        The term \( p^k \) denotes the probability of achieving exactly \( k \) successes, and \( (1 - p)^{n - k} \) accounts for the probability of the remaining \( n - k \) trials resulting in failures.
+    </p>
+
+    <div id="controls">
+        <div class="slider-container">
+            <label for="n">Number of Trials (n):</label>
+            <input type="range" id="n" name="n" min="1" max="50" value="10">
+            <span id="nValue">10</span>
+        </div>
+        <div class="slider-container">
+            <label for="p">Probability of Success (p):</label>
+            <input type="range" id="p" name="p" min="0" max="1" step="0.01" value="0.5">
+            <span id="pValue">0.5</span>
+        </div>
+    </div>
+
+    <div id="equationContainer">
+        <div class="equation-line">
+            <span class="equation-text">Current Distribution Equation:</span>
+            <p id="distributionEquation">
+                <!-- Equation will be filled in by JavaScript -->
+            </p>
+        </div>
+        <div id="stats">
+            <div class="stat-item">
+                Mean: \( np = \) <span id="meanValue"></span>
+            </div>
+            <div class="stat-item">
+                Standard Deviation: \( \sqrt{np(1 - p)} = \) <span id="stddevValue"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="chart-container">
+        <canvas id="chart"></canvas>
+    </div>
+
+    <p id="normalExplanation" style="display:none;">
+        When the number of trials (n) is large, the binomial distribution can be approximated by a normal distribution. This is due to the Central Limit Theorem, which states that the distribution of the sample mean approaches a normal distribution as the sample size increases.
+    </p>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="binomial.js"></script>
+</body>
+</html>

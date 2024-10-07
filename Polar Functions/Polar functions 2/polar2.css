@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+.graph-container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    gap: 20px; /* Added space between graphs */
+}
+
+.graph {
+    position: relative;
+    border: 1px solid #ccc;
+    background-color: white;
+    width: 500px;
+    height: 500px;
+}
+
+.label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 16px;
+    color: black;
+}
+
+.x-label, .y-label, .r-label, .theta-label {
+    position: absolute;
+    font-size: 14px;
+    color: black;
+}
+
+.x-label {
+    bottom: 5px;
+    right: 10px;
+}
+
+.y-label {
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}
+
+.r-label {
+    bottom: 5px;
+    right: 10px;
+}
+
+.theta-label {
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}

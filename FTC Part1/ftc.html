@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamental Theorem of Calculus Proof</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .step {
+            margin: 20px auto;
+            padding: 10px;
+            max-width: 800px;
+            text-align: left;
+        }
+        .step h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .math {
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-align: center;
+        }
+        p {
+            margin: 10px 0;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="centered">Fundamental Theorem of Calculus - Derivative of the Integral</h1>
+    <h2 class="centered">We aim to prove that \( \frac{d}{dx} \int_a^x f(t) \, dt = f(x) \).</h2>
+
+    <div class="step">
+        <h2>Step 1: Define the Function \( F \)</h2>
+        <p>
+            Define the function \( F(x) \) as follows:
+        </p>
+        <div class="math">
+            \( F(x) = \int_a^x f(t) \, dt \)
+        </div>
+        <p>
+            Here is a graph of an arbitrary cubic function with bounds of integration \( a \) and \( x \):
+        </p>
+        <img src="graph_step1.png" alt="Graph of a cubic function with bounds of integration a and x">
+    </div>
+    
+    <div class="step">
+        <h2>Step 2: Use the Definition of the Derivative</h2>
+        <p>
+            To find the derivative of \( F \), we use the definition of the derivative:
+        </p>
+        <div class="math">
+            \( F'(x) = \lim_{h \to 0} \frac{F(x + h) - F(x)}{h} \)
+        </div>
+        <p>
+            The graph of the function with the area shaded in until \( x + h \) is shown below:
+        </p>
+        <img src="graph_step2.png" alt="Graph with area shaded from x to x+h">
+        <p>
+            Subtract \( F(x) \) from \( F(x + h) \):
+        </p>
+        <div class="math">
+            \( F(x + h) - F(x) = \int_x^{x + h} f(t) \, dt \)
+        </div>
+        <p>
+            Here is a graph showing the strip of area between \( x \) and \( x + h \):
+        </p>
+        <img src="graph_step3.png" alt="Strip of area between x and x+h">
+    </div>
+    
+    <div class="step">
+        <h2>Step 3: Mean Value Theorem for Integrals</h2>
+        <p>
+            We need to analyze the behavior of this quotient as \( h \) approaches 0. The Mean Value Theorem for integrals states that, given that a function is continuous, the average value of the function over a region equals the integral between the bounds divided by the length of the region, and that there is some point \( c \) between the bounds such that:
+        </p>
+        <div class="math">
+            \( f(c) = \frac{\int_x^{x + h} f(t) \, dt}{(x+h) - x} \)
+        </div>
+        <p>
+            Rearranging the terms and simplifying, we get:
+        </p>
+        <div class="math">
+            \( \int_x^{x + h} f(t) \, dt = f(c) \cdot h \)
+        </div>
+        <p>
+            where \( c \) is some point in \([x, x + h]\). Here is a graph illustrating the point \( c \) where the area of the rectangle \( f(c) \cdot (x + h - x) \) equals the area under the curve:
+        </p>
+        <img src="graph_step4.png" alt="Point c and rectangle with area f(c)*(x+h-x)">
+        <p>
+            This is not specific to the image above. for all values of \( h \), there is some \( c \) between \( x \) and \( x+h \) that satisfies the Mean Value Theorem.
+        </p>
+        <img src="graph_step5.png" alt="Point c and rectangle with area f(c)*(x+h-x) as x+h approaches x">
+        <p>
+            As \( h \) approaches 0, \( c \) approaches \( x \). Therefore:
+        </p>
+        <div class="math">
+            \( \lim_{h \to 0} \frac{\int_x^{x + h} f(t) \, dt}{h} 
+            = \lim_{h \to 0} \frac{f(c) \cdot h}{h} 
+            = \lim_{h \to 0} f(c)
+            = f(x) \)
+        </div>
+    </div>
+    
+    <div class="step">
+        <h2>Conclusion</h2>
+        <p>
+            Combining all the steps, we get:
+        </p>
+        <div class="math">
+            \( F'(x) = \frac{d}{dx} \int_a^x f(t) \, dt = \lim_{h \to 0} \frac{F(x + h) - F(x)}{h} = f(x) \)
+        </div>
+        <p>
+            Thus, we have proven that the derivative of the function \( F(x) \) is \( f(x) \), confirming one part of the Fundamental Theorem of Calculus.
+        </p>
+    </div>
+</body>
+</html>

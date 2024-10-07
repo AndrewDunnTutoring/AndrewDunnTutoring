@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riemann Sums for sin(x)</title>
+    <link rel="stylesheet" href="sinx.styles.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="sinx.script.js" defer></script>
+</head>
+<body>
+    <h1>Riemann Sums and Integral Approximation</h1>
+    <h2>∫<sub>0</sub><sup>5π/6</sup> sin(x) dx</h2>
+    <div id="graph" style="width: 100%; height: 500px;"></div>
+    <div id="controls">
+        <div class="control-group">
+            <label for="method">Method:</label>
+            <select id="method">
+                <option value="left">Left-hand Sum</option>
+                <option value="right">Right-hand Sum</option>
+                <option value="midpoint">Midpoint Sum</option>
+                <option value="trapezoidal">Trapezoidal</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="num-intervals">Number of Intervals:</label>
+            <input type="range" id="num-intervals" min="2" max="100" value="10">
+            <span id="num-intervals-display">10</span>
+        </div>
+
+        <p>Estimated Area: <span id="estimated-area">0</span></p>
+        <p>Exact Area: <span id="exact-area">0</span></p>
+        <p>Error: <span id="error">0</span></p>
+    </div>
+    <footer>
+        <p>Made by Andrew Dunn - Version 1</p>
+    </footer>
+</body>
+</html>

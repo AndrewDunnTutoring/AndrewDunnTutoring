@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Distribution</title>
+    <link rel="stylesheet" href="geometric.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+    <h1>Geometric Distribution Visualization</h1>
+    <p>
+        The geometric distribution models the number of trials required to achieve the first success in a sequence of independent Bernoulli trials. 
+        The probability of achieving the first success on the \( k \)-th trial is given by the formula:
+    </p>
+    <p>
+        \( P(X = k) = (1 - p)^{k - 1} \cdot p \)
+    </p>
+    <p>
+        In this formula, \( (1 - p)^{k - 1} \) represents the probability of failing \( k - 1 \) times, and \( p \) is the probability of success on the \( k \)-th trial.
+    </p>
+
+    <div id="controls">
+        <div class="slider-container">
+            <label for="p">Probability of Success (p):</label>
+            <input type="range" id="p" name="p" min="0" max="1" step="0.01" value="0.5">
+            <span id="pValue">0.5</span>
+        </div>
+    </div>
+
+    <div id="equationContainer">
+        <div class="equation-line">
+            <span class="equation-text">Current Distribution Equation:</span>
+            <p id="distributionEquation">
+                <!-- Equation will be filled in by JavaScript -->
+            </p>
+        </div>
+        <div id="stats">
+            <div class="stat-item">
+                Mean: \( \frac{1}{p} = \) <span id="meanValue"></span>
+            </div>
+            <div class="stat-item">
+                Standard Deviation: \( \frac{\sqrt{1 - p}}{p} = \) <span id="stddevValue"></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="chart-container">
+        <canvas id="chart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="geometric.js"></script>
+</body>
+</html>

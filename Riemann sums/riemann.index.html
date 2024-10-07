@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riemann Sums and Integral Approximation</title>
+    <link rel="stylesheet" href="riemann.styles.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.0.0/math.min.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Riemann Sums and Integral Approximation</h1>
+    </header>
+
+    <section id="integral-notation">
+        <div id="function">
+            ∫<span id="function-input" contenteditable="true">sin(x)</span> dx
+        </div>
+        <div id="bounds">
+            from <span id="lower-bound" contenteditable="true">0</span> to <span id="upper-bound" contenteditable="true">5π/6</span>
+        </div>
+    </section>
+
+    <div id="graph"></div>
+
+    <section id="controls">
+        <label for="method">Method:</label>
+        <select id="method">
+            <option value="left">Left Hand Sum</option>
+            <option value="right">Right Hand Sum</option>
+            <option value="midpoint">Midpoint Sum</option>
+            <option value="trapezoidal">Trapezoidal Rule</option>
+        </select>
+
+        <label for="num-intervals">Number of Rectangles:</label>
+        <input type="range" id="num-intervals" min="2" max="100" value="10">
+        <span id="num-intervals-display">10</span>
+
+        <p>Estimated Area: <span id="estimated-area"></span></p>
+        <p>Exact Area: <span id="exact-area"></span></p>
+        <p>Error: <span id="error"></span></p>
+    </section>
+
+    <footer>
+        <!-- Footer content -->
+    </footer>
+
+    <script src="riemann.script.js"></script>
+</body>
+</html>

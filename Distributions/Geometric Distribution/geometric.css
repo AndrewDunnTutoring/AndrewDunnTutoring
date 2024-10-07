@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+#controls {
+    margin: 10px 0; /* Reduced margin above and below the sliders */
+}
+
+#controls label {
+    margin-right: 10px; /* Space between label and slider */
+}
+
+#controls input[type="range"] {
+    margin-right: 10px; /* Space between sliders */
+}
+
+#controls .slider-container {
+    display: inline-block;
+    margin-right: 30px; /* Space between sliders and the next slider */
+}
+
+#equationContainer {
+    margin: 5px 0; /* Further reduced margin around the equation container */
+}
+
+#distributionEquation {
+    font-size: 0.9em; /* Slightly smaller font size for better fit */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.equation-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Adjust space between text and equation */
+}
+
+.equation-text {
+    font-size: 1em; /* Adjust size as needed */
+    display: inline-block;
+}
+
+#stats {
+    margin: 10px 0; /* Reduced margin above and below the stats */
+    font-size: 1em; /* Adjust size as needed */
+}
+
+#stats .stat-item {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+#stats .stat-item span {
+    font-weight: bold;
+}
+
+#chart-container {
+    margin: 10px 0; /* Reduced margin above and below the chart */
+}
+
+#chart {
+    height: 200px; /* Adjust the height as needed */
+}

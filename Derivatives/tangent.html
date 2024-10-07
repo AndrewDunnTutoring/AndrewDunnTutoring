@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secant and Tangent Line Visualizer</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        #description {
+            max-width: 600px;
+            margin: 0 auto 20px;
+            text-align: center;
+        }
+        #graph {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #slider-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Visualizing the Slope of Secant and Tangent Lines</h1>
+
+    <div id="description">
+        <p>
+            A <strong>secant line</strong> connects two points on a curve, and its slope gives the average rate of change between those points.
+            A <strong>tangent line</strong> touches the curve at a single point, representing the instantaneous rate of change or the derivative at that point.
+            As the second point on the secant line approaches the first point, the secant line's slope approaches the slope of the tangent line.
+        </p>
+        <p>
+            The derivative of \( f(x) \) at \( x = a \) is defined as:
+        </p>
+        <p>
+            \[
+            f'(a) = \lim_{{h \to 0}} \frac{{f(a+h) - f(a)}}{h}
+            \]
+        </p>
+        <p>
+            This definition shows that as \( h \) becomes smaller, the slope of the secant line (average rate of change) approaches the slope of the tangent line (instantaneous rate of change).
+        </p>
+    </div>
+
+    <div id="graph"></div>
+
+    <div id="slider-container">
+        <label for="h-slider">Adjust the value of h: </label>
+        <input type="range" id="h-slider" min="0" max="2" step="0.01" value="1.0" oninput="updateGraph()">
+        <span id="h-value">h = 1.0</span>
+        <span id="slope-value">| Slope: </span>
+    </div>
+
+    <script>
+        const a = Math.PI / 4;
+
+        function f(x) {
+            return Math.sin(x);
+        }
+
+        function df(x) {
+            return Math.cos(x);
+        }
+
+        function updateGraph() {
+            const h = parseFloat(document.getElementById('h-slider').value);
+            document.getElementById('h-value').textContent = `h = ${h.toFixed(2)}`;
+            
+            let slope;
+            if (h !== 0) {
+                slope = (f(a + h) - f(a)) / h;
+                document.getElementById('slope-value').textContent = `| Secant Slope: ${slope.toFixed(3)}`;
+            } else {
+                slope = df(a);
+                document.getElementById('slope-value').textContent = `| Tangent Slope: ${slope.toFixed(3)}`;
+            }
+
+            const xValues = [];
+            const yValues = [];
+            const secantYValues = [];
+            const tangentYValues = [];
+
+            for (let x = 0; x <= 2 * Math.PI; x += 0.01) {
+                xValues.push(x);
+                yValues.push(f(x));
+                secantYValues.push(f(a) + slope * (x - a));
+                tangentYValues.push(df(a) * (x - a) + f(a));
+            }
+
+            const data = [
+                {
+                    x: xValues,
+                    y: yValues,
+                    mode: 'lines',
+                    name: 'f(x) = sin(x)'
+                },
+                {
+                    x: xValues,
+                    y: h !== 0 ? secantYValues : tangentYValues,
+                    mode: 'lines',
+                    name: h !== 0 ? 'Secant Line' : 'Tangent Line',
+                    line: { dash: h !== 0 ? 'dash' : 'solid', color: h !== 0 ? 'red' : 'blue' }
+                },
+                {
+                    x: [a],
+                    y: [f(a)],
+                    mode: 'markers',
+                    name: 'Point (a, f(a))',
+                    marker: { color: 'green', size: 10 }
+                },
+                {
+                    x: [a + h],
+                    y: [f(a + h)],
+                    mode: 'markers',
+                    name: 'Point (a+h, f(a+h))',
+                    marker: { color: 'blue', size: 10 }
+                }
+            ];
+
+            Plotly.newPlot('graph', data, {
+                title: 'Secant and Tangent Line Visualizer',
+                xaxis: { title: 'x' },
+                yaxis: { title: 'f(x)', range: [-1, 2] }
+            });
+        }
+
+        window.onload = updateGraph;
+    </script>
+
+</body>
+</html>

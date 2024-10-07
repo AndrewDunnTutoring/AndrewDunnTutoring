@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polar and Cartesian Graphs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        canvas {
+            border: 1px solid black;
+            margin: 10px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .graph-container {
+            margin: 0 20px;
+        }
+        #description {
+            margin-bottom: 20px;
+        }
+        #animate-button {
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #animate-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</head>
+<body>
+    <h1>Understanding the Link Between Cartesian and Polar Coordinates</h1>
+
+    <p id="description">
+        This demonstration illustrates the connection between Cartesian and polar coordinate systems. 
+    </p>
+    <p>
+        On the left, the Cartesian graph displays the function \( y = \sin(2x) \). Here, \( x \) is plotted along the horizontal axis, and \( y \) is plotted along the vertical axis. As \( x \) varies, the function creates a wave pattern that oscillates between positive and negative values, effectively illustrating how the amplitude of the function changes with \( x \).
+    </p>
+    <p>
+        On the right, we visualize the polar function \( r = \sin(2\theta) \). In polar coordinates, \( r \) represents the radial distance from the origin, and \( \theta \) denotes the angle from the positive x-axis. The function \( r = \sin(2\theta) \) produces a rose curve with 4 petals. As \( \theta \) varies, the curve rotates around the origin. The distance from the origin \( r \) changes as \( \theta \) increases, creating the characteristic petal shapes.
+    </p>
+    <p>
+        The animation will show how the Cartesian curve is mapped into the polar coordinate system. Specifically, as the red dot moves along the Cartesian graph, the corresponding points on the polar graph will be plotted. This process visually demonstrates how each point on the Cartesian curve rotates and transforms into the polar curve, illustrating the connection between the two representations.
+    </p>
+
+    <div class="container">
+        <div class="graph-container">
+            <h2>Cartesian Graph: \( y = \sin(2x) \)</h2>
+            <canvas id="cartesian-graph" width="500" height="500"></canvas>
+        </div>
+        <div class="graph-container">
+            <h2>Polar Graph: \( r = \sin(2\theta) \)</h2>
+            <canvas id="polar-graph" width="500" height="500"></canvas>
+        </div>
+    </div>
+
+    <button id="animate-button">Draw Polar Graph</button>
+
+    <script src="polar2.js"></script>
+</body>
+</html>
